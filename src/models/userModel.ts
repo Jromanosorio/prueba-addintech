@@ -2,11 +2,6 @@ import { Schema, Types, model, Model } from "mongoose";
 import { User } from "../interfaces/user.interface";
 
 const userSchema = new Schema<User>({
-    identificacion: {
-        type: String,
-        unique: true,
-        required: true
-    },
     nombre: {
         type: String,
         required: true
@@ -17,6 +12,7 @@ const userSchema = new Schema<User>({
     },
     username: {
         type: String,
+        unique: true,
         required: true
     },
     password: {

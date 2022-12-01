@@ -2,7 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { routerItems } from "./routes/items";
-import { routerUsers } from "./routes/users";
+import { routerAuth } from "./routes/auth";
 import ConnectDB from "./config/connection";
 
 const app = express()
@@ -22,6 +22,6 @@ ConnectDB()
 app.use('/api', routerItems)
 
 // users routes
-app.use('/auth', routerUsers)
+app.use('/auth', routerAuth)
 
 app.listen(PORT, () => console.log("Running on PORT: ", PORT))
