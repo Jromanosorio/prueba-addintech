@@ -3,7 +3,7 @@ import express from "express";
 import cors from "cors";
 import { routerItems } from "./routes/items";
 import { routerUsers } from "./routes/users";
-import ConnectDB from "./config/mongo";
+import ConnectDB from "./config/connection";
 
 const app = express()
 
