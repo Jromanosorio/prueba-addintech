@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import userModel from "../models/userModel";
 import { Encrypt, Verify } from "../utils/bcrypt";
+import { generateToken } from "../utils/token";
 
 const loginUser = async (req: Request, res: Response) => {
   try {
@@ -20,7 +21,9 @@ const loginUser = async (req: Request, res: Response) => {
       throw new Error
     }
 
-    res.status(200).send({ data: user });
+    const token = await generateToken({name: user.nombre, username: user.username })
+
+    res.status(200).send({ data: user, token });
 
   } catch (error) {
     res.status(500).send({ data: "WRONG_USER_OR_PASSWORD" });
